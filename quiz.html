@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Movie Quiz specific styles */
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            margin-top: 50px;
+            color: #2c3e50;
+        }
+
+        p {
+            text-align: center;
+            font-size: 18px;
+            color: #555;
+        }
+
+        h2 {
+            font-size: 24px;
+            text-align: center;
+            margin-top: 40px;
+            color: #2c3e50;
+        }
+
+        h3 {
+            font-size: 20px;
+            color: #34495e;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        button {
+            display: block;
+            margin: 30px auto;
+            padding: 10px 20px;
+            background-color: #1100ffbb;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        /* Change the radio button value text color to red */
+        label.radio-label {
+            color: red;
+            font-size: 18px;
+        }
+
+        /* Styling for theme select label to prevent it being affected */
+        label[for="theme-select"] {
+            color: white;
+            font-size: 16px;
+        }
+    </style>
+    <script>
+        function calculateScore() {
+            // Initialize score variable
+            let score = 0;
+            
+            // Get the answers for each question
+            const question1 = document.querySelector('input[name="question1"]:checked');
+            const question2 = document.querySelector('input[name="question2"]:checked');
+            const question3 = document.querySelector('input[name="question3"]:checked');
+            
+            // Check the answers and update the score
+            if (question1 && question1.value === "Leonardo DiCaprio") score++;
+            if (question2 && question2.value === "1999") score++;
+            if (question3 && question3.value === "Christopher Nolan") score++;
+            
+            // Display the score
+            alert("Your Score: " + score + " / 3");
+        }   
+    </script>
+<script src="script.js" defer></script>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="theme-switcher">
+            <label for="theme-select">Choose Theme:</label>
+            <select id="theme-select">
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+                <option value="blue">Blue</option>
+            </select>
+        </div>
+    </header>
+
+    <main>
+        <h1>Welcome to the Movie Quiz!</h1>
+        <p>Test your knowledge of movies, actors, and famous movie quotes.</p>
+        
+        <h2>Quiz Instructions:</h2>
+        <p>Choose the correct answer for each question and submit your answers to see your score!</p>
+        
+        <h3>1. Who played the character of "Jack Dawson" in the movie Titanic?</h3>
+        <ul>
+            <li><input type="radio" name="question1" value="Leonardo DiCaprio"><label class="radio-label" for="question1">Leonardo DiCaprio</label></li>
+            <li><input type="radio" name="question1" value="Johnny Depp"><label class="radio-label" for="question1">Johnny Depp</label></li>
+            <li><input type="radio" name="question1" value="Brad Pitt"><label class="radio-label" for="question1">Brad Pitt</label></li>
+        </ul>
+
+        <h3>2. In which year was the movie "The Matrix" released?</h3>
+        <ul>
+            <li><input type="radio" name="question2" value="1999"><label class="radio-label" for="question2">1999</label></li>
+            <li><input type="radio" name="question2" value="2000"><label class="radio-label" for="question2">2000</label></li>
+            <li><input type="radio" name="question2" value="2001"><label class="radio-label" for="question2">2001</label></li>
+        </ul>
+
+        <h3>3. Who directed the movie "The Dark Knight"?</h3>
+        <ul>
+            <li><input type="radio" name="question3" value="Steven Spielberg"><label class="radio-label" for="question3">Steven Spielberg</label></li>
+            <li><input type="radio" name="question3" value="Martin Scorsese"><label class="radio-label" for="question3">Martin Scorsese</label></li>
+            <li><input type="radio" name="question3" value="Christopher Nolan"><label class="radio-label" for="question3">Christopher Nolan</label></li>
+        </ul>                                               
+
+        <!-- Button to submit the quiz -->
+        <button onclick="calculateScore()">Submit Quiz</button>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Movie Quiz | All Rights Reserved</p>
+    </footer>
+
+</body>
+</html>
+
+
+
+
+
+
+
